@@ -1,0 +1,38 @@
+# Kconfig - Cryptography primitive options for wolfTPM
+
+#
+# Copyright (c) 2016 Intel Corporation
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+config ZEPHYR_WOLFTPM_MODULE
+        bool
+config WOLFTPM_PROMPTLESS
+        bool
+        help
+          Symbol to disable the prompt for WOLFTPM selection.
+          This symbol may be used internally in a Kconfig tree to hide the
+          wolfTPM menu prompt and instead handle the selection of WOLFTPM from
+          dependent sub-configurations and thus prevent stuck symbol behavior.
+
+
+menuconfig WOLFTPM
+	bool "wolfTPM Support" if !WOLFTPM_PROMPTLESS
+	help
+	  This option enables the wolfTPM cryptography library.
+
+if WOLFTPM
+
+endif
+
